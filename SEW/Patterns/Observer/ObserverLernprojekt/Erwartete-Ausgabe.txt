@@ -1,0 +1,25 @@
+=== Klassisches Observer Pattern ===
+[Station] Neu: 22 °C
+[Anzeige] 22 °C
+[Station] Neu: 31 °C
+[Anzeige] 31 °C
+[Alarm] Achtung: 31 °C!
+--- Anzeige wird abgemeldet ---
+[Station] Neu: 35 °C
+[Alarm] Achtung: 35 °C!
+--- Gleicher Wert: keine Meldung ---
+--- Auch Alarm wird abgemeldet ---
+[Station] Neu: 36 °C
+
+=== Observer mit C#-Events ===
+[Station] Neu: 22 °C
+[Anzeige] 22 °C
+[Station] Neu: 31 °C
+[Anzeige] 31 °C
+[Alarm] Achtung: 31 °C!
+--- Anzeige wird abgemeldet ---
+[Station] Neu: 35 °C
+[Alarm] Achtung: 35 °C!
+--- Gleicher Wert: keine Meldung ---
+--- Auch Alarm wird abgemeldet ---
+[Station] Neu: 36 °C

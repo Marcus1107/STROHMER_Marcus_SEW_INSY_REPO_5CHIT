@@ -1,0 +1,14 @@
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\bin\Debug\net8.0\ObserverLernprojekt.exe
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\bin\Debug\net8.0\ObserverLernprojekt.deps.json
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\bin\Debug\net8.0\ObserverLernprojekt.runtimeconfig.json
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\bin\Debug\net8.0\ObserverLernprojekt.dll
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\bin\Debug\net8.0\ObserverLernprojekt.pdb
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\ObserverLernprojekt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\ObserverLernprojekt.AssemblyInfoInputs.cache
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\ObserverLernprojekt.AssemblyInfo.cs
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\ObserverLernprojekt.csproj.CoreCompileInputs.cache
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\ObserverLernprojekt.dll
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\refint\ObserverLernprojekt.dll
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\ObserverLernprojekt.pdb
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\ObserverLernprojekt.genruntimeconfig.cache
+C:\Schule\5CHIT_2026_27\SEW\STROHMER_Marcus_SEW_REPO_5CHIT\Patterns\Observer\ObserverLernprojekt\obj\Debug\net8.0\ref\ObserverLernprojekt.dll
