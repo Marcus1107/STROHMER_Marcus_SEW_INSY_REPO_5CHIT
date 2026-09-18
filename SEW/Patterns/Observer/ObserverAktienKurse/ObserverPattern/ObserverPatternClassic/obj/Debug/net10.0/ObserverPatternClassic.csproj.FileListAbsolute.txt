@@ -1,0 +1,14 @@
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\bin\Debug\net10.0\ObserverPatternClassic.exe
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\bin\Debug\net10.0\ObserverPatternClassic.deps.json
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\bin\Debug\net10.0\ObserverPatternClassic.runtimeconfig.json
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\bin\Debug\net10.0\ObserverPatternClassic.dll
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\bin\Debug\net10.0\ObserverPatternClassic.pdb
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\ObserverPatternClassic.GeneratedMSBuildEditorConfig.editorconfig
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\ObserverPatternClassic.AssemblyInfoInputs.cache
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\ObserverPatternClassic.AssemblyInfo.cs
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\ObserverPatternClassic.csproj.CoreCompileInputs.cache
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\ObserverPatternClassic.dll
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\refint\ObserverPatternClassic.dll
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\ObserverPatternClassic.pdb
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\ObserverPatternClassic.genruntimeconfig.cache
+D:\5CHIT\SEW\ObserverPattern\ObserverPatternClassic\obj\Debug\net10.0\ref\ObserverPatternClassic.dll
