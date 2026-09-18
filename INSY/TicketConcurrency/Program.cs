@@ -1,4 +1,4 @@
-using TicketConcurrency.Components;
+using Transactions.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
