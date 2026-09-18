@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\5CHIT\\SEW\\ObserverPattern\\ObserverPatternEvent\\ObserverPatternEvent.csproj": {}
+    "C:\\Schule\\5CHIT_2026_27\\SEW_INSY\\STROHMER_Marcus_SEW_INSY_REPO_5CHIT\\SEW\\Patterns\\Observer\\ObserverAktienKurse\\ObserverPattern\\ObserverPatternEvent\\ObserverPatternEvent.csproj": {}
   },
   "projects": {
-    "D:\\5CHIT\\SEW\\ObserverPattern\\ObserverPatternEvent\\ObserverPatternEvent.csproj": {
+    "C:\\Schule\\5CHIT_2026_27\\SEW_INSY\\STROHMER_Marcus_SEW_INSY_REPO_5CHIT\\SEW\\Patterns\\Observer\\ObserverAktienKurse\\ObserverPattern\\ObserverPatternEvent\\ObserverPatternEvent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\5CHIT\\SEW\\ObserverPattern\\ObserverPatternEvent\\ObserverPatternEvent.csproj",
+        "projectUniqueName": "C:\\Schule\\5CHIT_2026_27\\SEW_INSY\\STROHMER_Marcus_SEW_INSY_REPO_5CHIT\\SEW\\Patterns\\Observer\\ObserverAktienKurse\\ObserverPattern\\ObserverPatternEvent\\ObserverPatternEvent.csproj",
         "projectName": "ObserverPatternEvent",
-        "projectPath": "D:\\5CHIT\\SEW\\ObserverPattern\\ObserverPatternEvent\\ObserverPatternEvent.csproj",
-        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "D:\\5CHIT\\SEW\\ObserverPattern\\ObserverPatternEvent\\obj\\",
+        "projectPath": "C:\\Schule\\5CHIT_2026_27\\SEW_INSY\\STROHMER_Marcus_SEW_INSY_REPO_5CHIT\\SEW\\Patterns\\Observer\\ObserverAktienKurse\\ObserverPattern\\ObserverPatternEvent\\ObserverPatternEvent.csproj",
+        "packagesPath": "C:\\Users\\marcu\\.nuget\\packages\\",
+        "outputPath": "C:\\Schule\\5CHIT_2026_27\\SEW_INSY\\STROHMER_Marcus_SEW_INSY_REPO_5CHIT\\SEW\\Patterns\\Observer\\ObserverAktienKurse\\ObserverPattern\\ObserverPatternEvent\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\marcu\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -67,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.108/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Users\\marcu\\.dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
