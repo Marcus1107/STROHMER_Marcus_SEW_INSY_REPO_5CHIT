@@ -1,6 +1,12 @@
+using Microsoft.EntityFrameworkCore;
 using Models;
+using WebAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<TicketDbContext>(options =>
+    options.UseMySQL(builder.Configuration.GetConnectionString("TicketDatabase")
+        ?? throw new InvalidOperationException("Connection string 'TicketDatabase' is missing.")));
 
 var app = builder.Build();
 
