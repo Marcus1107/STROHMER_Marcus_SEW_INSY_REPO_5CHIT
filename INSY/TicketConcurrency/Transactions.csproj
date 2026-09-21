@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Die untergeordneten Projekte werden separat gebaut. -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);Models/**;WebAPI/**</DefaultItemExcludes>
   </PropertyGroup>
 
 </Project>
