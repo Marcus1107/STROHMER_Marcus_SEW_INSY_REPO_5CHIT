@@ -1,7 +1,63 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+@rendermode InteractiveServer
+@using Models
+@inject IHttpClientFactory HttpClientFactory
 
-<h1>Hello, world!</h1>
+<PageTitle>Ticketbestand</PageTitle>
 
-Welcome to your new app.
+<h1>Ticketbestand</h1>
+<p>Der Bestand wird von der WebAPI geladen. Aktuell sind dort Beispieltickets hinterlegt.</p>
+
+@if (loading)
+{
+    <p role="status">Tickets werden geladen …</p>
+}
+else if (error is not null)
+{
+    <div class="alert alert-warning" role="alert">@error</div>
+}
+else if (tickets is not null)
+{
+    <p class="fs-4" role="status">Anzahl Tickets: <strong>@tickets.Length</strong></p>
+}
+
+<button class="btn btn-primary" @onclick="LoadTicketsAsync" disabled="@loading">
+    Bestand aktualisieren
+</button>
+
+@code {
+    private Ticket[]? tickets;
+    private bool loading;
+    private string? error;
+
+    protected override async Task OnInitializedAsync() => await LoadTicketsAsync();
+
+    private async Task LoadTicketsAsync()
+    {
+        loading = true;
+        error = null;
+        try
+        {
+            var client = HttpClientFactory.CreateClient("WebAPI");
+            tickets = await client.GetFromJsonAsync<Ticket[]>("api/tickets")
+                ?? throw new System.Text.Json.JsonException();
+        }
+        catch (HttpRequestException)
+        {
+            error = "Die WebAPI ist nicht erreichbar oder meldet einen Fehler. Bitte WebAPI mit dem Profil http starten und erneut aktualisieren.";
+        }
+        catch (TaskCanceledException)
+        {
+            error = "Die Anfrage hat zu lange gedauert. Bitte erneut aktualisieren.";
+        }
+        catch (System.Text.Json.JsonException)
+        {
+            error = "Die WebAPI hat keine gültigen Ticketdaten geliefert.";
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}

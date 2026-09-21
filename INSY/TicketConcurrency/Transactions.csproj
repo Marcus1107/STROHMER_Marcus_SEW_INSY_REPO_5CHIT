@@ -8,4 +8,7 @@
     <DefaultItemExcludes>$(DefaultItemExcludes);Models/**;WebAPI/**</DefaultItemExcludes>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="Models\Models.csproj" />
+  </ItemGroup>
 </Project>
