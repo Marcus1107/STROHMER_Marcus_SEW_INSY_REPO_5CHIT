@@ -22,16 +22,94 @@ else if (tickets is not null)
     <p class="fs-4" role="status">Anzahl Tickets: <strong>@tickets.Length</strong></p>
 }
 
-<button class="btn btn-primary" @onclick="LoadTicketsAsync" disabled="@loading">
+<button class="btn btn-primary" @onclick="LoadTicketsAsync" disabled="@(loading || saving)">
     Bestand aktualisieren
 </button>
+
+<div class="mt-3">
+    <label for="ticket-count" class="form-label">Anzahl Tickets</label>
+    <input id="ticket-count" type="number" min="1" step="1" class="form-control mb-2"
+           style="max-width: 12rem" @bind="countInput" @bind:event="oninput" disabled="@(loading || saving)" />
+    @if (!ValidCount)
+    {
+        <p class="text-danger">Bitte eine positive ganze Zahl eingeben.</p>
+    }
+    <button class="btn btn-success" @onclick="() => ChangeTicketsAsync(true)"
+            disabled="@(loading || saving || !ValidCount || tickets is null || error is not null)">
+        Tickets hinzufügen
+    </button>
+    <button class="btn btn-danger ms-2" @onclick="() => ChangeTicketsAsync(false)"
+            disabled="@(loading || saving || !ValidCount || tickets is null || error is not null || Count > tickets.Length)">
+        Tickets löschen
+    </button>
+    @if (ValidCount && tickets is not null && Count > tickets.Length)
+    {
+        <p class="mt-2">Zum Löschen sind nicht genügend Tickets vorhanden.</p>
+    }
+    @if (saving)
+    {
+        <p role="status">Änderung wird gespeichert …</p>
+    }
+</div>
+
+@if (message is not null)
+{
+    <p class="mt-3" role="status">@message</p>
+}
 
 @code {
     private Ticket[]? tickets;
     private bool loading;
+    private bool saving;
+    private string countInput = "3";
+    private int Count => int.TryParse(countInput, out var value) ? value : 0;
+    private bool ValidCount => Count > 0;
     private string? error;
+    private string? message;
 
     protected override async Task OnInitializedAsync() => await LoadTicketsAsync();
+
+    private async Task ChangeTicketsAsync(bool adding)
+    {
+        if (!ValidCount || saving || loading)
+            return;
+
+        var count = Count;
+        saving = true;
+        message = null;
+        try
+        {
+            var client = HttpClientFactory.CreateClient("WebAPI");
+            using var response = adding
+                ? await client.PostAsync($"api/tickets?count={count}", null)
+                : await client.DeleteAsync($"api/tickets?count={count}");
+            if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+            {
+                message = "Die Tickets konnten nicht gelöscht werden. Der Bestand wurde geändert oder ist zu klein.";
+            }
+            else
+            {
+                response.EnsureSuccessStatusCode();
+                message = adding ? $"{count} Tickets wurden hinzugefügt." : $"{count} Tickets wurden gelöscht.";
+            }
+
+            await LoadTicketsAsync();
+        }
+        catch (HttpRequestException)
+        {
+            message = "Die Änderung konnte nicht bestätigt werden. Bitte den Bestand aktualisieren, bevor du es erneut versuchst.";
+            tickets = null;
+        }
+        catch (TaskCanceledException)
+        {
+            message = "Die Anfrage hat zu lange gedauert. Bitte erst den Bestand aktualisieren; die Änderung könnte bereits erfolgt sein.";
+            tickets = null;
+        }
+        finally
+        {
+            saving = false;
+        }
+    }
 
     private async Task LoadTicketsAsync()
     {
