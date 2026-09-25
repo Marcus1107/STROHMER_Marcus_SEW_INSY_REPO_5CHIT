@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ObserverPatternEvent")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0882ef793797fc07d515486794d37f02050d1082")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b60bf96d6f840d1af16a1b5a85f60d435df93b7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ObserverPatternEvent")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ObserverPatternEvent")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Models;
 using WebAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,10 +12,10 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 
-var tickets = Enumerable.Range(1, 100)
-    .Select(id => new Ticket { Id = id, Name = $"Ticket {id}" })
-    .ToArray();
-
-app.MapGet("/api/tickets", () => tickets);
+app.MapGet("/api/tickets", async (TicketDbContext db, CancellationToken cancellationToken) =>
+    await db.Tickets
+        .AsNoTracking()
+        .OrderBy(ticket => ticket.Id)
+        .ToArrayAsync(cancellationToken));
 
 app.Run();
