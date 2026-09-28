@@ -71,21 +71,23 @@ else if (tickets is not null)
 
     private async Task ChangeTicketsAsync(bool adding)
     {
-        if (!ValidCount || saving || loading)
+        if (!ValidCount || saving || loading || tickets is null)
             return;
 
         var count = Count;
+        var expectedCount = tickets.Length;
         saving = true;
         message = null;
         try
         {
             var client = HttpClientFactory.CreateClient("WebAPI");
             using var response = adding
-                ? await client.PostAsync($"api/tickets?count={count}", null)
-                : await client.DeleteAsync($"api/tickets?count={count}");
+                ? await client.PostAsync($"api/tickets?count={count}&expectedCount={expectedCount}", null)
+                : await client.DeleteAsync($"api/tickets?count={count}&expectedCount={expectedCount}");
             if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
             {
-                message = "Die Tickets konnten nicht gelöscht werden. Der Bestand wurde geändert oder ist zu klein.";
+                error = "Der Ticketbestand wurde inzwischen geändert. Deine Änderung wurde nicht gespeichert. Bitte auf ‚Bestand aktualisieren‘ klicken.";
+                return;
             }
             else
             {
