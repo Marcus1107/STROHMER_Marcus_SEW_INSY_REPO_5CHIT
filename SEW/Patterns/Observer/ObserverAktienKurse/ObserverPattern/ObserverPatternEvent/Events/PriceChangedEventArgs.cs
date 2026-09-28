@@ -1,6 +1,6 @@
 ﻿namespace ObserverPatternEvent;
 
-public class PriceChangedEventArgs : EventArgs
+/*public class PriceChangedEventArgs : EventArgs
 {
     public decimal NewPrice { get; }
 
@@ -8,4 +8,16 @@ public class PriceChangedEventArgs : EventArgs
     {
         NewPrice = newPrice;
     }
+}*/
+
+/*public class PriceChangedEventArgs(decimal newPrice) : EventArgs
+{
+    public decimal NewPrice { get; } = newPrice;
+}*/
+
+public class PriceChangedEventArgs(decimal newPrice) : EventArgs
+{
+    public string NewPrice { get; }
 }
+
+

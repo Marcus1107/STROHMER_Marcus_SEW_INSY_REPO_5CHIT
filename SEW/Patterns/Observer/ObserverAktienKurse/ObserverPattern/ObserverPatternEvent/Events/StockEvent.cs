@@ -3,7 +3,7 @@
 public class StockEvent
 {
     public string Symbol { get; }
-    private decimal _price;
+    public decimal _price { get; private set; }
 
     public event EventHandler<PriceChangedEventArgs>? PriceChanged;
 

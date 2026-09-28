@@ -4,6 +4,13 @@ using WebAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: false);
+    builder.Configuration.AddEnvironmentVariables();
+    builder.Configuration.AddCommandLine(args);
+}
+
 builder.Services.AddDbContext<TicketDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("TicketDatabase")
         ?? throw new InvalidOperationException("Connection string 'TicketDatabase' is missing.")));

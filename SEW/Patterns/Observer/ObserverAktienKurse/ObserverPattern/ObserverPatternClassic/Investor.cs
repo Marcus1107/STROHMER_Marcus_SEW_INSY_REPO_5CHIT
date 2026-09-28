@@ -9,8 +9,8 @@ public class Investor : IObserver
         Name = name;
     }
 
-    public void Update(Stock stock, decimal price)
+    public void Update(Stock stock)
     {
-        Console.WriteLine($"{Name} wurde informiert: {stock.Symbol} jetzt bei {price:C}");
+        Console.WriteLine($"{Name} wurde informiert: {stock.Symbol} jetzt bei {stock._price}");
     }
 }

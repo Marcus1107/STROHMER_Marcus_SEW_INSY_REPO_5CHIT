@@ -2,8 +2,8 @@
 
 public class TickerDisplay : IObserver
 {
-    public void Update(Stock stock, decimal price)
+    public void Update(Stock stock)
     {
-        Console.WriteLine($"[Ticker] {stock.Symbol} Kurs aktualisiert auf {price}€");
+        Console.WriteLine($"[Ticker] {stock.Symbol} Kurs aktualisiert auf {stock._price}€");
     }
 }

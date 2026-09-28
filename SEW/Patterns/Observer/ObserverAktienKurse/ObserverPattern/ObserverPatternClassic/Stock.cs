@@ -3,7 +3,7 @@
 public class Stock : ISubject
 {
     private readonly List<IObserver> _observers = new();
-    private decimal _price;
+    public decimal _price { get; private set; }
     public string Symbol { get; }
     
     public Stock(string symbol, decimal startPrice)
@@ -19,7 +19,7 @@ public class Stock : ISubject
     {
         foreach (var observer in _observers)
         {
-            observer.Update(this, _price);
+            observer.Update(this);
         }
     }
     

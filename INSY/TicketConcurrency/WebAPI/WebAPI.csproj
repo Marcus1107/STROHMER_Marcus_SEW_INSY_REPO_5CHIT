@@ -19,4 +19,8 @@
     <UserSecretsId>84162ceb-2861-4b8e-b14e-1397b0861838</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Update="appsettings.Local.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
 </Project>
