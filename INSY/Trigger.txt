@@ -1,0 +1,14 @@
+create database Transactions;
+use Transactions;
+
+create TABLE accounts(id int PRIMARY KEY, amount int NOT NULL )
+
+create TABLE changelog(updateId int Primary Key auto_increment, oldValue int not null, newVlaue int not null, accountId int not null)
+
+create trigger log_account_update
+AFTER UPDATE ON accounts
+FOR EACH ROW
+    BEGIN
+        INSERT INTO changelog (oldValue, newVlaue, accountId)
+        VALUES (old.amount, new.amount, old.id);
+    end;
