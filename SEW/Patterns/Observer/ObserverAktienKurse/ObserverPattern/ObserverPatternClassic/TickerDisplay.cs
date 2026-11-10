@@ -4,6 +4,6 @@ public class TickerDisplay : IObserver
 {
     public void Update(Stock stock)
     {
-        Console.WriteLine($"[Ticker] {stock.Symbol} Kurs aktualisiert auf {stock._price}€");
+        Console.WriteLine($"[{stock.LastUpdated:dd.MM.yyyy HH:mm:ss}] [Ticker] {stock.Symbol} Kurs aktualisiert auf {stock._price}€");
     }
 }

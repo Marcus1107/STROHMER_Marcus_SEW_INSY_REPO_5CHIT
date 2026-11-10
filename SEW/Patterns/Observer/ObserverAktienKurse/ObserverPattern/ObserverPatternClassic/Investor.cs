@@ -11,6 +11,6 @@ public class Investor : IObserver
 
     public void Update(Stock stock)
     {
-        Console.WriteLine($"{Name} wurde informiert: {stock.Symbol} jetzt bei {stock._price}");
+        Console.WriteLine($"[{stock.LastUpdated:dd.MM.yyyy HH:mm:ss}] {Name} wurde informiert: {stock.Symbol} jetzt bei {stock._price}");
     }
 }

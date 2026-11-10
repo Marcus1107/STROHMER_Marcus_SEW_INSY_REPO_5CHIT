@@ -5,6 +5,7 @@ public class Stock : ISubject
     private readonly List<IObserver> _observers = new();
     public decimal _price { get; private set; }
     public string Symbol { get; }
+    public DateTimeOffset LastUpdated { get; private set; } = DateTimeOffset.Now;
     
     public Stock(string symbol, decimal startPrice)
     {
@@ -26,6 +27,7 @@ public class Stock : ISubject
     public void SetPrice(decimal price)
     {
         _price = price;
+        LastUpdated = DateTimeOffset.Now;
         Notify();
     }
     
