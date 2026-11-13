@@ -1,0 +1,120 @@
+@page "/"
+@rendermode InteractiveServer
+@using Neo4jApp.Models
+@using Neo4jApp.Services
+@inject Neo4jService Database
+@inject ILogger<Home> Logger
+
+<PageTitle>Neo4j · Städteverbindungen</PageTitle>
+
+<main>
+    <h1>Städteverbindungen</h1>
+    <p>Finde einen Weg durch deinen Neo4j-Graphen.</p>
+
+    <form @onsubmit="SearchAsync" @onsubmit:preventDefault>
+        <div class="fields">
+            <label for="origin">Von
+                <input id="origin" @bind="origin" placeholder="Graz" list="cities" disabled="@isLoading" required />
+            </label>
+            <label for="destination">Nach
+                <input id="destination" @bind="destination" placeholder="Linz" list="cities" disabled="@isLoading" required />
+            </label>
+            <button type="submit" disabled="@isLoading">@(isLoading ? "Bitte warten …" : "Route suchen")</button>
+        </div>
+        <datalist id="cities"><option value="Graz" /><option value="Wien" /><option value="Linz" /></datalist>
+    </form>
+
+    <p role="status" class="status">@status</p>
+
+    @if (route is not null)
+    {
+        <section aria-label="Gefundene Route" class="result">
+            <h2>@DisplayName(route.Cities.First()) → @DisplayName(route.Cities.Last())</h2>
+            <div class="graph" aria-label="@string.Join(" → ", route.Cities.Select(DisplayName))">
+                @for (var index = 0; index < route.Cities.Count; index++)
+                {
+                    <div class="node">@DisplayName(route.Cities[index])</div>
+                    @if (index < route.Legs.Count)
+                    {
+                        var leg = route.Legs[index];
+                        <div class="edge">
+                            <span>@(leg.Distance is null ? "DISTANCE" : $"{leg.Distance:0.##} {leg.Unit}")</span>
+                            <div class="line"></div>
+                        </div>
+                    }
+                }
+            </div>
+            <p>@string.Join(" → ", route.Cities.Select(DisplayName))</p>
+            @if (route.Legs.Count > 0 && route.Legs.All(leg => leg.Distance is not null && leg.Unit == "km"))
+            {
+                <p class="total">Gesamtstrecke @route.Legs.Sum(leg => leg.Distance ?? 0).ToString("0.##") km</p>
+            }
+        </section>
+    }
+
+    <details>
+        <summary>Städtebeispiel einrichten</summary>
+        <p>Ergänzt Graz → Wien (200 km) und Wien → Linz (180 km) aus dem Unterricht.</p>
+        <button type="button" class="secondary" @onclick="CreateExampleAsync" disabled="@isLoading">Beispieldaten in Neo4j anlegen</button>
+    </details>
+</main>
+
+@code {
+    private string origin = "Graz";
+    private string destination = "Linz";
+    private CityRoute? route;
+    private bool isLoading;
+    private string status = "Start und Ziel eingeben und die Route suchen.";
+
+    private static string DisplayName(string name) => name == "Vienna" ? "Wien" : name;
+
+    private async Task SearchAsync()
+    {
+        route = null;
+        if (string.IsNullOrWhiteSpace(origin) || string.IsNullOrWhiteSpace(destination))
+        {
+            status = "Bitte Start und Ziel eingeben.";
+            return;
+        }
+
+        isLoading = true;
+        status = "Route wird gesucht …";
+        try
+        {
+            route = await Database.FindRouteAsync(origin, destination);
+            status = route is null
+                ? "Keine Verbindung gefunden. Prüfe die Städtenamen und ob die Beispieldaten bereits angelegt sind."
+                : "Route gefunden.";
+        }
+        catch (Exception exception)
+        {
+            Logger.LogError(exception, "Route konnte nicht geladen werden.");
+            status = "Neo4j-Abfrage fehlgeschlagen. Prüfe Docker, den Container neo4j und die Zugangsdaten.";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task CreateExampleAsync()
+    {
+        isLoading = true;
+        route = null;
+        status = "Beispieldaten werden angelegt …";
+        try
+        {
+            await Database.CreateCityExampleAsync();
+            status = "Beispieldaten sind bereit. Suche jetzt die Route von Graz nach Linz.";
+        }
+        catch (Exception exception)
+        {
+            Logger.LogError(exception, "Beispieldaten konnten nicht angelegt werden.");
+            status = "Anlegen fehlgeschlagen. Prüfe Docker, den Container neo4j und die Zugangsdaten.";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
